@@ -71,7 +71,7 @@ chown -R $(id -u):$(id -g) $HOME
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
 
 #adding configs to the kubelet controller
-echo '--allocate-node-cidrs=true\n--cluster-cidr=10.244.0.0/16' >> /etc/kubernetes/manifests/kube-controller-manager.yaml
+echo "--allocate-node-cidrs=true\n--cluster-cidr=10.244.0.0/16" >> /etc/kubernetes/manifests/kube-controller-manager.yaml
 
 #restart kubelet 
 systemctl restart kubelet
