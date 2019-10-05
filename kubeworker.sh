@@ -32,6 +32,7 @@ yum-config-manager \
   https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y docker-ce docker-ce-cli containerd.io
 systemctl start docker && systemctl enable docker
+usermod -a -G docker $(whoami)
 
 #set kernel parameters 
 cat <<EOF> /etc/sysctl.d/k8s.conf
