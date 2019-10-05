@@ -21,7 +21,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 setenforce 0
 
 #install and enable kube pacakges
-yum install -y kubelet-1.11.3 kubeadm-1.11.3 kubectl-1.11.3 kubernetes-cni-0.6.0 --disableexcludes=kubernetes
+yum install -y kubelet kubeadm kubectl kubernetes-cni --disableexcludes=kubernetes
 systemctl start kubelet && systemctl enable kubelet
 
 #install docker
@@ -45,18 +45,18 @@ EOF
 sysctl --system
 
 #create kubeadm config file
-cat <<EOF> kube-config.yml
-apiVersion: kubeadm.k8s.io/v1alpha1
-kind:
-kubernetesVersion: "v1.11.3"
-networking:
-  podSubnet: 10.244.0.0/16
-apiServerExtraArgs:
-  service-node-port-range: 8000-31274
-EOF
+#cat <<EOF> kube-config.yml
+#apiVersion: kubeadm.k8s.io/v1alpha1
+#kind:
+#kubernetesVersion: "v1.11.3"
+#networking:
+#  podSubnet: 10.244.0.0/16
+#apiServerExtraArgs:
+#  service-node-port-range: 8000-31274
+#EOF
 
 #intilize kube dir:w
-kubeadm init --config kube-config.yml
+kubeadm init --pod-network-cidr=10.244.0.0/16 --service-node-port-range=8000-31274
 
 #make howe kube dir
 mkdir -p $HOME/.kube
