@@ -45,18 +45,18 @@ EOF
 sysctl --system
 
 #create kubeadm config file
-cat <<EOF> kube-config.yml
-apiVersion: v1
-kind: ClusterConfiguration
-kubernetesVersion: stable
-networking:
-  podSubnet: 10.244.0.0/16
-apiServerExtraArgs:
-  service-node-port-range: 8000-31274
-EOF
+#cat <<EOF> kube-config.yml
+#apiVersion: v1
+#kind: ClusterConfiguration
+#kubernetesVersion: stable
+#networking:
+#  podSubnet: 10.244.0.0/16
+#apiServerExtraArgs:
+#  service-node-port-range: 8000-31274
+#EOF
 
 #intilize kube dir:w
-kubeadm init --config kube-config.yml
+kubeadm init --pod-network-cidr=10.244.0.0/16
 
 #make howe kube dir
 mkdir -p $HOME/.kube
