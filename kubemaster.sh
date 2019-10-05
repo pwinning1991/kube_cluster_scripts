@@ -47,8 +47,8 @@ sysctl --system
 #create kubeadm config file
 cat <<EOF> kube-config.yml
 apiVersion: kubeadm.k8s.io/v1alpha1
-kind:
-kubernetesVersion: "latest"
+kind: ClusterConfiguration
+kubernetesVersion: stable
 networking:
   podSubnet: 10.244.0.0/16
 apiServerExtraArgs:
