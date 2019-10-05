@@ -37,7 +37,7 @@ sysctl --system
 cat <<EOF> kube-config.yml
 apiVersion: kubeadm.k8s.io/v1alpha1
 kind:
-kubernetesVersion: latest
+kubernetesVersion: ""v1.11.3
 networking:
   podSubnet: 10.244.0.0/16
 apiServerExtraArgs:
