@@ -37,7 +37,7 @@ sysctl --system
 cat <<EOF> kube-config.yml
 apiVersion: kubeadm.k8s.io/v1alpha1
 kind:
-kubernetesVersion: ""v1.11.3
+kubernetesVersion: "v1.11.3"
 networking:
   podSubnet: 10.244.0.0/16
 apiServerExtraArgs:
@@ -51,7 +51,7 @@ kubeadm init --config kube-config.yml
 mkdir -p $HOME/.kube
 
 #copy admin conf to home dir
-cp -i /etc/kuberneted/admin.conf $HOME/.kube/config
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 #make sure all files in home are owned after copying files to it
 chown -R $(id -u):$(id -g) $HOME
