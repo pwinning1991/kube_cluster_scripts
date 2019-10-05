@@ -5,10 +5,10 @@ swapoff -a
 sed -e '/^\/root\/swap/ s/^#*/#/' /etc/fstab
 
 #add kube repo
-cat <<EOF> /etc/yum.repos.d/kuberenetes.repos
+cat <<EOF> /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kuberneted-el1-x86_64
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
 enabled=1
 gpgcheck=1
 repo_gpgcheck=1
