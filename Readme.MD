@@ -6,8 +6,8 @@
 ### These are configured and tested on centos7
 #### Normally this would be done with config management, should probably rewrite this is ansible
 
-```bash```
+```bash
 git clone https://github.com/pwinning1991/kube_cluster_scripts.git
 cd kube_cluster_scripts
 ./kubemaster.sh
-```bash```
+```
