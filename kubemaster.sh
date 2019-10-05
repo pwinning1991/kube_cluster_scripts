@@ -21,7 +21,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 setenforce 0
 
 #install and enable kube pacakges
-yum install -y kubelet kubeadm kubectl kubernetes-cni --disableexcludes=kubernetes
+yum install -y kubelet-1.11.3 kubeadm-1.11.3 kubectl-1.11.3 kubernetes-cni-0.6.0 --disableexcludes=kubernetes
 systemctl start kubelet && systemctl enable kubelet
 
 #install docker
