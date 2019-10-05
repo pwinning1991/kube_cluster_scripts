@@ -45,7 +45,7 @@ apiServerExtraArgs:
 EOF
 
 #intilize kube dir:w
-kubeadm initialize --config kube-config.yml
+kubeadm init --config kube-config.yml
 
 #make howe kube dir
 mkdir -p $HOME/.kube
