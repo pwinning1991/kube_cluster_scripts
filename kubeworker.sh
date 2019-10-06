@@ -36,6 +36,10 @@ yum install -y docker-ce docker-ce-cli containerd.io
 systemctl start docker && systemctl enable docker
 usermod -a -G docker $(whoami)
 
+ sed -i '/^ExecStart/ s/$/ --exec-opt native.cgroupdriver=systemd/' /usr/lib/systemd/system/docker.service
+systemctl daemon-reload
+systemctl enable docker --now
+
 #set kernel parameters 
 cat <<EOF> /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
