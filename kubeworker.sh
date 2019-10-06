@@ -5,14 +5,15 @@ swapoff -a
 sed -e '/^\/root\/swap s/^#*/#/' /etc/fstab
 
 #add kube repo
-cat <<EOF> /etc/yum.repos.d/kuberenetes.repos
+cat <<EOF> /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kuberneted-el1-x86_64
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
 enabled=1
 gpgcheck=1
 repo_gpgcheck=1
-exlcude=kube*
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kube*
 EOF
 
 #set selinux to diabled on all reboots
@@ -20,7 +21,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 setenforce 0
 
 #install and enable kube pacakges
-yum install -y kubelet-1.11.3 kubeadm-1.11.3 kubectl-1.11.3 kubernetes-cni-0.6.0 --disableexcludes=kubernetes
+yum install -y kubelet kubeadm kubectl kubernetes-cni --disableexcludes=kubernetes
 
 systemctl start kubelet && systemctl enable kubelet
 
